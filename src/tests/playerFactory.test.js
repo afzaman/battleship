@@ -13,16 +13,9 @@ describe('Player functions correctly', () =>{
     })
 
     test('Player can shoot', () => {
-        testPlayer1.shoot(testPlayer2.gameBoard, 0)
-
-        expect(testPlayer2.gameBoard.board[0].isShot).toBe(true)
+        let result = testPlayer1.receiveAttack(0)
+        expect(result[0].isShot).toBe(true)
     });
-    test('Player cant shoot the same cell twice', () => {
-        testPlayer1.shoot(testPlayer2.gameBoard, 0)
-        testPlayer1.shoot(testPlayer2.gameBoard, 0)
-
-        expect(testPlayer2.gameBoard.board[0].isShot).toBe(true)
-    }); 
 })
 
 

@@ -29,13 +29,13 @@ describe('Gameboard functions correctly', () =>{
 
     test('Can legally place a ship horizontally', () => {
         const patrolShipArray = testBoard.shipArray(testPatrol, 0, "horizontal")
-        testBoard.placeShip(patrolShipArray)
+        testBoard.placeShip(testPatrol, patrolShipArray)
         expect(testBoard.board[0].hasShip && testBoard.board[1].hasShip).toBe(true)
     });
 
     test('Can legally place a ship vertically', () => {
         const patrolShipArray = testBoard.shipArray(testPatrol, 0, "vertical")
-        testBoard.placeShip(patrolShipArray)
+        testBoard.placeShip(testPatrol, patrolShipArray)
         expect(testBoard.board[0].hasShip && testBoard.board[8].hasShip).toBe(true)
     });
 
@@ -61,7 +61,7 @@ describe('Gameboard functions correctly', () =>{
 
     test('Can identify an ship collision', () => {
         const patrolShipArray = testBoard.shipArray(testPatrol, 0, "vertical")
-        testBoard.placeShip(patrolShipArray)
+        testBoard.placeShip(testPatrol, patrolShipArray)
         const carrierShipArray = testBoard.shipArray(testCarrier, 0, "vertical")
         expect(testBoard.checkPlacement(carrierShipArray)).toBe(false)
     });
@@ -73,14 +73,14 @@ describe('Gameboard functions correctly', () =>{
 
     test('Can receive an successful attack', () => {
         const patrolShipArray = testBoard.shipArray(testPatrol, 0, "horizontal")
-        testBoard.placeShip(patrolShipArray)
+        testBoard.placeShip(testPatrol, patrolShipArray)
         testBoard.receiveAttack(1)
         expect(testBoard.didShotHit(1)).toBe(true)
     });
 
     test('Can identify if all ships are sunk', () => {
         const patrolShipArray = testBoard.shipArray(testPatrol, 0, "horizontal")
-        testBoard.placeShip(patrolShipArray)
+        testBoard.placeShip(testPatrol, patrolShipArray)
         testBoard.receiveAttack(0)
         testBoard.receiveAttack(1)
         expect(testBoard.allSunk()).toBe(true)
@@ -88,7 +88,7 @@ describe('Gameboard functions correctly', () =>{
 
     test('Can identify if all ships are not sunk', () => {
         const carrierShipArray = testBoard.shipArray(testCarrier, 0, "horizontal")
-        testBoard.placeShip(carrierShipArray)
+        testBoard.placeShip(testCarrier, carrierShipArray)
         testBoard.receiveAttack(0)
         testBoard.receiveAttack(1)
         expect(testBoard.allSunk()).toBe(false)

@@ -5,9 +5,10 @@ class Gameboard {
             this.board.push({hasShip: false, ship: {}, isShot: false})
         }
     }
-    placeShip(locationArray){
-        for (let i = 0; i < locationArray.length; i++){
-            this.board[locationArray[i]].hasShip = true
+    placeShip(ship, shipArray){
+        for (let i = 0; i < shipArray.length; i++){
+            this.board[shipArray[i]].hasShip = true
+            this.board[shipArray[i]].ship = ship
         }
     }
 
@@ -43,7 +44,15 @@ class Gameboard {
     }
 
     receiveAttack(location){
-        this.board[location].isShot = true
+        if (this.board[location].isShot === false){
+            this.board[location].isShot = true
+        } else return false
+    }
+
+    checkAttack(location){
+        if (this.board[location].isShot === false){
+            return true
+        } else return false
     }
 
     didShotHit(location){
