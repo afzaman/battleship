@@ -15,11 +15,6 @@ function Home(props) {
     let path = `game`; 
     history.push(path);
   }
-
-  // function writePlayerName(e){
-  //   updatePlayerName(e.target.value)
-  //   console.log(e.target.value)
-  // }
   
   return (
     

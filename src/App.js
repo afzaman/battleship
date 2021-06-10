@@ -1,10 +1,11 @@
 import Player from './factories/playerFactory'
 import Gameboard from './components/Gameboard'
 import React, {useState} from 'react'
+import { useHistory } from "react-router-dom";
 
 function App(props) {
 
-  const {playerName} = props
+  const {playerName, handleWin} = props
   
   const [player] = useState(new Player(playerName))
   const [enemy] = useState(new Player("enemy"))
@@ -14,6 +15,22 @@ function App(props) {
   let enemySunk = enemy.gameBoard.allSunk()
   let playerSunk = player.gameBoard.allSunk()
 
+  const history = useHistory();
+
+  const routeChange = () =>{ 
+    let path = `gameover`; 
+    history.push(path);
+  }
+
+  if (enemySunk === true){
+    handleWin(playerName)
+    routeChange()
+  }
+
+  if (playerSunk === true){
+    handleWin("enemy")
+    routeChange()
+  }
 
   function handleClick(target, location){
     if (target.gameBoard.checkAttack(location) === true){
