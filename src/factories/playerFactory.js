@@ -8,7 +8,32 @@ class Player {
         this.gameBoard = new Gameboard()
 
         for (let i = 0; i < ships.length; i++){
-            const shipArray = this.gameBoard.shipArray(ships[i], i, "vertical")
+            
+            let randCoord
+            let randOrient
+            let randOrientNum = Math.floor(Math.random() * 2)
+
+            let avialableSpaces = []
+            this.gameBoard.board.forEach((cell, index) => {
+                if (cell.hasShip === false){
+                    avialableSpaces.push(index)
+                }
+            })
+
+            let shipArray = this.gameBoard.shipArray(ships[i], randCoord, randOrient)
+            
+            do {
+                randCoord = Math.floor(Math.random() * avialableSpaces.length)
+                randOrient = Math.floor(Math.random() * 2)
+                if (randOrientNum === 0){
+                    randOrient = "horizontal"
+                }else{
+                    randOrient = "vertical"
+                }
+                shipArray = this.gameBoard.shipArray(ships[i], randCoord, randOrient)
+            }
+            while (this.gameBoard.checkPlacement(shipArray) === false)
+
             this.gameBoard.placeShip(ships[i], shipArray)
           }
     }

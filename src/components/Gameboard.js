@@ -9,7 +9,7 @@ function Gameboard(props) {
 
   return (
     <div>
-      <h1>{player.name} Waters</h1>
+      <h1>{player.name}'s Waters</h1>
       <div className="board">
         {player.gameBoard.board.map((cell, index) => 
           <button
