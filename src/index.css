@@ -1,12 +1,28 @@
+body{
+  background-color: rgb(138, 138, 138);
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+h1{
+
+}
+
+.title{
+  font-size: 10vh;
+  color: rgb(150, 150, 150);
+  text-align: center;
+}
+
 .game-board{
   display: flex;
-  padding: 5%;
+  justify-content: center;
+  
 }
 .player-board{
-  padding: inherit;
+  text-align: center;
+  padding: 5%;
 }
 .ai-board{
-  padding: inherit;
+  padding: 5%;
 }
 
 .board {
@@ -17,8 +33,70 @@
 .cell {
   width: 60px;
   height: 60px;
-  background-color: rgb(93, 93, 255);
+  background-color: rgb(100, 100, 255);
+}
+.cell[ship="true"] {
+  background-color: rgb(100, 100, 100);
 }
 .cell[shot="true"] {
+  background-color: rgb(200, 200, 255);
+}
+.cell[shotShip="true"] {
   background-color: rgb(255, 93, 93);
+}
+
+.play-again-container {
+  display: flex;
+  justify-content: center;
+  padding: 10%;
+}
+
+.play-again {
+	width: 150px;
+	height: 50px;
+	cursor: pointer;
+	letter-spacing: 5px;
+	background: #ffc421;
+	border: 2px solid black;
+	box-shadow: 0px 0px 0px rgba(0,0,0,0.4);
+	transition: 500ms;
+}
+
+.play-again:after {
+	content: '';
+	position: absolute;
+	transform: translateX(-55px) translateY(-40px);
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	background: transparent;
+	box-shadow: 0px 0px 50px transparent;
+	transition: 500ms;
+}
+
+.play-again:hover {
+	transform: translateY(-5px);
+	box-shadow: 0px 10px 10px rgba(0,0,0,0.4);
+}
+
+.play-again:hover:after {
+	background: white;
+	box-shadow: 0px 0px 20px #ffc421, 0px 0px 30px #ffc421, inset 0px 0px 10px #ffc421;
+	animation: spin 1s infinite linear;
+}
+
+@keyframes spin{
+	25%{transform: translateX(-25px) translateY(-35px);
+			width: 15px;
+			height: 15px;}
+	50% {transform: translateX(-55px) translateY(-30px);
+			width: 5px;
+			height: 5px;}
+	75% {transform: translateX(-85px) translateY(-35px);
+			width: 15px;
+			height: 15px;}
+}
+
+.play-again:focus {
+	outline: none;
 }

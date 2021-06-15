@@ -1,16 +1,16 @@
 import Player from './factories/playerFactory'
-import Gameboard from './components/Gameboard'
+import EnemyGameboard from './components/EnemyGameboard'
+import PlayerGameboard from './components/PlayerGameboard'
 import React, {useState} from 'react'
 import { useHistory } from "react-router-dom";
 
 function App(props) {
 
-  const {playerName, handleWin} = props
+  const {handleWin} = props
   
-  const [player] = useState(new Player(playerName))
-  const [enemy] = useState(new Player("enemy"))
+  const [player] = useState(new Player("Player"))
+  const [enemy] = useState(new Player("Enemy"))
   const [key, updateKey] = useState(0)
-  const [gameLog, updateGameLog] = useState("")
 
   let enemySunk = enemy.gameBoard.allSunk()
   let playerSunk = player.gameBoard.allSunk()
@@ -23,12 +23,12 @@ function App(props) {
   }
 
   if (enemySunk === true){
-    handleWin(playerName)
+    handleWin("Player")
     routeChange()
   }
 
   if (playerSunk === true){
-    handleWin("enemy")
+    handleWin("Enemy")
     routeChange()
   }
 
@@ -37,8 +37,6 @@ function App(props) {
       enemy.receiveAttack(location)
       let randomShot = player.receiveRandomAttack()
       player.receiveAttack(randomShot)
-      updateGameLog((prevLog) => "\n" + "Enemy was Attacked at " + location + "\n" + prevLog + "\n")
-      updateGameLog((prevLog) => "Player was Attacked at " + randomShot + "\n" + prevLog)
       rerender()
     }
   }
@@ -50,23 +48,22 @@ function App(props) {
   return (
     
     <div>
+      <div className="title">Fast Battleship</div>
       <div className="game-board">
+        
         <div className="player-board">
-          <Gameboard 
+          <PlayerGameboard 
             player={player} 
             key = {key}
             handleClick={handleClick}/>
-            <h1>All Sunk? : {playerSunk.toString()}</h1>
         </div>
         <div className="ai-board">
-          <Gameboard 
+          <EnemyGameboard 
             player={enemy}
             key = {0}
             handleClick={handleClick}/>
-            <h1>All Sunk? : {enemySunk.toString()}</h1>
         </div>
       </div>
-      <div>{gameLog}</div>
     </div>
     
   );

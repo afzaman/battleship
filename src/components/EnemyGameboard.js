@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Gameboard(props) {
+function EnemyGameboard(props) {
 
   const {
     player,
@@ -18,8 +18,8 @@ function Gameboard(props) {
             key={Math.random()}
             onClick={handleClick.bind(this, player, index)}
             shot={cell.isShot.toString()}
+            shotShip={cell.isShot && cell.hasShip ? "true" : "false"}
           >
-            {cell.ship.name}
           </button>)}
       </div>
     </div>
@@ -27,4 +27,4 @@ function Gameboard(props) {
   );
 }
 
-export default Gameboard;
+export default EnemyGameboard;

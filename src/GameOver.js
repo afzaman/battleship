@@ -8,7 +8,7 @@ function GameOver(props) {
   const history = useHistory();
 
   const routeChange = () =>{ 
-    let path = `game`; 
+    let path = ``; 
     history.push(path);
   }
 
@@ -16,8 +16,15 @@ function GameOver(props) {
   return (
     
     <div>
-        {winner} wins!
-        <button onClick={routeChange}>Play Again?</button>
+
+        <div className="title">{winner} wins!</div>
+        
+        <br/>
+
+        <span className="play-again-container">
+          <button onClick={routeChange} className="play-again">Play Again?</button>
+        </span>
+
     </div>
     
   );
