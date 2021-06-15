@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { BrowserRouter, Switch, Route } from "react-router-dom"
+import { HashRouter as BrowserRouter, Switch, Route } from "react-router-dom"
 import App from "./App"
 import GameOver from "./GameOver"
 
@@ -16,7 +16,7 @@ const Routes = () => {
       <Switch>
 
         <Route 
-          path="/game"exact 
+          path="/" exact 
           component={() => <App winner={winner} handleWin={handleWin}/>}
         />
 

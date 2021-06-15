@@ -22,7 +22,8 @@ h1{
   padding: 5%;
 }
 .ai-board{
-  padding: 5%;
+	text-align: center;
+	padding: 5%;
 }
 
 .board {
