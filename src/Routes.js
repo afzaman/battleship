@@ -16,7 +16,7 @@ const Routes = () => {
       <Switch>
 
         <Route 
-          path="/"exact 
+          path="/game"exact 
           component={() => <App winner={winner} handleWin={handleWin}/>}
         />
 

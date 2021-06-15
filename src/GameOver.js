@@ -8,7 +8,7 @@ function GameOver(props) {
   const history = useHistory();
 
   const routeChange = () =>{ 
-    let path = ``; 
+    let path = `/game`; 
     history.push(path);
   }
 

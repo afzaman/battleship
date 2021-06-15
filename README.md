@@ -25,7 +25,7 @@ You will also see any lint errors in the console.
 
 ## Live Demo
 
-[Memory Game](https://afzaman.github.io/battleship)
+[Battleship Game](https://afzaman.github.io/battleship)
 
 ## Getting Started
 
